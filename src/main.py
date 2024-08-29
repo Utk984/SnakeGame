@@ -6,6 +6,7 @@ from classes.game import Direction, Game
 from classes.snake import Snake
 from input.user import get_user_input
 from movegen import move_gen
+from goaltest import goal_test
 
 
 def main():
@@ -38,7 +39,9 @@ def main():
                 dirstr.append("Left")
             if i.direction == 1:
                 dirstr.append("Right")
+
         print(f"MoveGen: {dirstr}")
+        print(f"Goal Test: {goal_test(game)}")
 
         user_input = get_user_input(dirs)
 

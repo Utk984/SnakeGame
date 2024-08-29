@@ -2,7 +2,7 @@
 
 from typing import List
 
-import readchar
+from readchar import readkey, key
 
 from classes.game import Direction
 
@@ -10,21 +10,21 @@ from classes.game import Direction
 def get_user_input(dirs: List):
     
     while True:
-        key = readchar.readkey()
-        if key == "a":
+        k = readkey()
+        if k == "a" or k == key.LEFT:
             dir = Direction.LEFT
-        elif key == "d":
+        elif k == "d" or k == key.RIGHT:
             dir = Direction.RIGHT
-        elif key == "w":
+        elif k == "w" or k == key.UP:
             dir = Direction.UP
-        elif key == "s":
+        elif k == "s" or k == key.DOWN:
             dir = Direction.DOWN
-        elif key == "q":
+        elif k == "q":
             dir = None
         else:
             dir = Direction.NONE
 
-        if dir in dirs:
+        if dir in dirs or dir is None:
             return dir
         else: 
             print("Invalid Input, Try Again")
