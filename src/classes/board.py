@@ -10,13 +10,13 @@ class Board:
         self.COL_COUNT = col_count
 
         self.cells = [
-            [Cell(row, col) for col in range(col_count)] for row in range(row_count)
+            [Cell(row, col) for col in range(col_count+1)] for row in range(row_count+1)
         ]
 
     def __str__(self) -> str:
-        board_str = "Use 'w' (up), 's' (down), 'a' (left), 'd' (right) to move. Press 'q' to quit.\n\n"
-        for row in self.cells:
-            for cell in row:
+        board_str = "Use 'w' (up), 's' (down), 'a' (left), 'd' (right) to move.\nPress any (wasd) to start. Press 'q' to quit.\n\n"
+        for row in self.cells[:-1]:
+            for cell in row[:-1]:
                 if cell.cell_type == CellType.EMPTY:
                     board_str += ". "
                 elif cell.cell_type == CellType.SNAKE:

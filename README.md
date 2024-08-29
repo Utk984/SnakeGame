@@ -4,6 +4,7 @@ Plaksha University Semester V (Monsoon 2024)
 AI3022 Search Methods in AI - Professor Deepak Khemani
 
 ## ISSUES
+- [ ] User args to define snake pos and game pos
 - [ ] If you go back into the snake, the snake dies
 - [ ] If you go off the board, the snake pops from other side (can change that)
 - [ ] Snake starts at length 0, can start from length 3 or 4
