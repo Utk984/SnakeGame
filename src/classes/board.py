@@ -1,5 +1,5 @@
 import random
-from typing import List, Tuple
+from typing import Tuple
 
 from classes.cell import Cell, CellType
 
@@ -14,7 +14,7 @@ class Board:
         ]
 
     def __str__(self) -> str:
-        board_str = ""
+        board_str = "Use 'w' (up), 's' (down), 'a' (left), 'd' (right) to move. Press 'q' to quit.\n\n"
         for row in self.cells:
             for cell in row:
                 if cell.cell_type == CellType.EMPTY:
@@ -27,7 +27,7 @@ class Board:
         return board_str
 
     def generate_food(self) -> Tuple[int, int]:
-        print("Going to generate food")
+        # print("Going to generate food")
         while True:
             row = random.randint(0, self.ROW_COUNT - 1)
             col = random.randint(0, self.COL_COUNT - 1)
@@ -35,5 +35,5 @@ class Board:
                 break
 
         self.cells[row][col].cell_type = CellType.FOOD
-        print(f"Food is generated at: {row}, {col}")
+        # print(f"Food is generated at: {row}, {col}")
         return row, col

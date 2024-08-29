@@ -1,4 +1,4 @@
-import os
+from os import system
 from enum import IntEnum
 
 from classes.board import Board
@@ -22,7 +22,7 @@ class Game:
         self.game_over = False
 
     def update(self):
-        print("Going to update the game")
+        # print("Going to update the game")
         if not self.game_over and self.direction != Direction.NONE:
             next_cell = self.get_next_cell(self.snake.head)
             if self.snake.check_crash(next_cell):
@@ -39,11 +39,11 @@ class Game:
                     # Normal move
                     self.snake.move(next_cell)
 
-        os.system("clear")
+        system("clear")
         print(self.board)
 
     def get_next_cell(self, current_position: Cell) -> Cell:
-        print("Going to find next cell")
+        # print("Going to find next cell")
         row, col = current_position.row, current_position.col
 
         if self.direction == Direction.RIGHT:
@@ -55,4 +55,4 @@ class Game:
         elif self.direction == Direction.DOWN:
             row += 1
 
-        return self.board.cells[row][col]
+        return self.board.cells[row % self.board.ROW_COUNT][col % self.board.COL_COUNT]

@@ -1,4 +1,4 @@
-import time
+from os import system
 
 from classes.board import Board
 from classes.cell import Cell
@@ -8,16 +8,14 @@ from input.user import get_user_input
 
 
 def main():
-    print("Going to start game")
-    init_pos = Cell(0, 0)
-    init_snake = Snake(init_pos)
+    init_pos = Cell(5, 5)
     board = Board(10, 10)
+    init_snake = Snake(init_pos)
     game = Game(init_snake, board)
+    system("clear")
     game.board.generate_food()
 
-    print(
-        "Use 'w' (up), 's' (down), 'a' (left), 'd' (right) to move. Press 'q' to quit."
-    )
+    print(game.board)
 
     while not game.game_over:
         # print(game.board)
@@ -36,7 +34,7 @@ def main():
             print("Game Over!")
             break
 
-        time.sleep(0.5)
+        # time.sleep(0.5)
 
 
 if __name__ == "__main__":
