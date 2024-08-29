@@ -13,6 +13,19 @@ class Board:
             [Cell(row, col) for col in range(col_count)] for row in range(row_count)
         ]
 
+    def __str__(self) -> str:
+        board_str = ""
+        for row in self.cells:
+            for cell in row:
+                if cell.cell_type == CellType.EMPTY:
+                    board_str += ". "
+                elif cell.cell_type == CellType.SNAKE:
+                    board_str += "S "
+                elif cell.cell_type == CellType.FOOD:
+                    board_str += "F "
+            board_str += "\n"
+        return board_str
+
     def generate_food(self) -> Tuple[int, int]:
         print("Going to generate food")
         while True:

@@ -1,5 +1,5 @@
+import os
 from enum import IntEnum
-from typing import Tuple
 
 from classes.board import Board
 from classes.cell import Cell, CellType
@@ -29,10 +29,18 @@ class Game:
                 self.direction = Direction.NONE
                 self.game_over = True
             else:
-                self.snake.move(next_cell)
                 if next_cell.cell_type == CellType.FOOD:
-                    self.snake.grow()
+                    # If next cell is food, don't remove the tail
+                    self.snake.body.appendleft(next_cell)
+                    self.snake.head = next_cell
+                    self.snake.head.cell_type = CellType.SNAKE
                     self.board.generate_food()
+                else:
+                    # Normal move
+                    self.snake.move(next_cell)
+
+        os.system("clear")
+        print(self.board)
 
     def get_next_cell(self, current_position: Cell) -> Cell:
         print("Going to find next cell")

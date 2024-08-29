@@ -9,9 +9,6 @@ class Snake:
         self.head = init_pos
         self.head.cell_type = CellType.SNAKE
 
-    def grow(self):
-        self.body.appendleft(self.head)
-
     def move(self, next_cell: Cell):
         print(f"Snake is moving to {next_cell.row}, {next_cell.col}")
         tail = self.body.pop()
