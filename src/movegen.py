@@ -14,7 +14,6 @@ def move_gen(game: Game) -> List[Game]:
     for move in possible_moves:
         if move != -state.direction:  # Prevent 180-degree turns
             next_cell = state.get_next_cell(move)
-            print(next_cell.row, next_cell.col)
             if not state.check_crash(next_cell):
                 new_state = create_new_state(state, next_cell, move)
                 valid_moves.append(new_state)

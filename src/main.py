@@ -10,12 +10,13 @@ from movegen import move_gen
 
 
 def main():
-    start_pos = input("Enter the starting position of the snake (x, y): ")
-    start_pos = start_pos.split(", ")
-    x, y = start_pos
-    init_pos = Cell(int(x), int(y))
-    board = Board(10, 10)
-    board.cells[int(x)][int(y)].cell_type = CellType.SNAKE
+    size = int(input("Enter grid size: "))
+    x = int(input("Enter initial snake row: "))
+    y = int(input("Enter initial snake column: "))
+
+    board = Board(size, size)
+    init_pos = Cell(x, y)
+    board.cells[x][y].cell_type = CellType.SNAKE
     init_snake = Snake(init_pos)
     game = Game(init_snake, board, Direction.NONE)
     game.board.generate_food()
@@ -29,6 +30,10 @@ def main():
         print(game.board)
 
         moves = move_gen(game)
+        if len(moves) == 0:
+            game.game_over = True
+            print("Game Over!")
+            break
 
         dirstr = []
         dirs = []
