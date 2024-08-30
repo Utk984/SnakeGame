@@ -1,0 +1,20 @@
+Use 'w' (up), 's' (down), 'a' (left), 'd' (right) to move.
+Press any (wasd) to start. Press 'q' to quit.
+
+
+┌─────────────────────┐
+│ . . . . . . . . . . │
+│ . . . . . . . . . . │
+│ . . . . . . . . . . │
+│ . . . . . . . . . . │
+│ . . . . . . . . . . │
+│ . . . . . . . . . . │
+│ . . . . . . . . . . │
+│ . . . . . . . . . . │
+│ . . . . S . . . . . │
+│ . . F . . . . . . . │
+└─────────────────────┘
+
+MoveGen: ['Right', 'Up', 'Down']
+Goal Test: False
+Game ended by user

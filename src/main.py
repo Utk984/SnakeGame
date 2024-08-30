@@ -1,4 +1,5 @@
 from os import system
+import sys
 
 from classes.board import Board
 from classes.cell import Cell, CellType
@@ -10,11 +11,23 @@ from movegen import move_gen
 
 
 def main():
-    size = int(input("Enter grid size: "))
-    x = int(input("Enter initial snake row: "))
-    y = int(input("Enter initial snake column: "))
+    argc = len(sys.argv)
+    print(argc)
+    sizex = 10
+    sizey = 10
+    x = 5
+    y = 5
+    if (argc > 1 and argc < 5) or (argc > 5):
+        print("Usage: ./run.sh <board_row_count> <board_col_count> <snake_row> <snake_col>")
+        print("OR ./run.sh                                 [uses default values 10 10 5 5]")
+        return
+    elif argc == 5:
+        sizex = int(sys.argv[1])
+        sizey = int(sys.argv[2])
+        x = int(sys.argv[3])
+        y = int(sys.argv[4])
 
-    board = Board(size, size)
+    board = Board(sizex, sizey)
     init_pos = Cell(x, y)
     board.cells[x][y].cell_type = CellType.SNAKE
     init_snake = Snake(init_pos)

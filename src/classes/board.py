@@ -14,8 +14,12 @@ class Board:
         ]
 
     def __str__(self) -> str:
-        board_str = "Use 'w' (up), 's' (down), 'a' (left), 'd' (right) to move.\nPress any (wasd) to start. Press 'q' to quit.\n\n"
+        board_str = "Use 'w' (up), 's' (down), 'a' (left), 'd' (right) to move.\nPress any (wasd) to start. Press 'q' to quit.\n\n┌─"
+        for _ in range(len(self.cells)-1):
+            board_str += "──"
+        board_str += "┐\n"
         for row in self.cells[:-1]:
+            board_str += "│ "
             for cell in row[:-1]:
                 if cell.cell_type == CellType.EMPTY:
                     board_str += ". "
@@ -23,7 +27,11 @@ class Board:
                     board_str += "S "
                 elif cell.cell_type == CellType.FOOD:
                     board_str += "F "
-            board_str += "\n"
+            board_str += "│\n"
+        board_str += "└─"
+        for _ in range(len(self.cells)-1):
+            board_str += "──"
+        board_str += "┘\n"
         return board_str
 
     def generate_food(self) -> Tuple[int, int]:
