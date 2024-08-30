@@ -47,15 +47,4 @@ class Board:
         
         row, col = random.choice(empty_cells)
         self.cells[row][col].cell_type = CellType.FOOD
-        print(f"Food is generated at: {row}, {col}")
         return row, col
-        
-        # while True:
-        #     row = random.randint(0, self.ROW_COUNT - 1)
-        #     col = random.randint(0, self.COL_COUNT - 1)
-        #     if self.cells[row][col].cell_type != CellType.SNAKE:
-        #         break
-        #
-        # self.cells[row][col].cell_type = CellType.FOOD
-        # # print(f"Food is generated at: {row}, {col}")
-        # return row, col
