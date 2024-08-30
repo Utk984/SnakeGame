@@ -24,7 +24,7 @@ class Game:
     def update(self):
         # print("Going to update the game")
         if not self.game_over and self.direction != Direction.NONE:
-            next_cell = self.get_next_cell()
+            next_cell = self.get_next_cell(self.direction)
             if self.check_crash(next_cell):
                 self.direction = Direction.NONE
                 self.game_over = True
@@ -39,20 +39,20 @@ class Game:
                     tail.cell_type = CellType.EMPTY
                     self.snake.move(next_cell)
 
-        # system("clear")
+    # system("clear")
 
-    def get_next_cell(self) -> Cell:
+    def get_next_cell(self, direction: Direction) -> Cell:
         # print("Going to find next cell")
         current_position = self.snake.head
         row, col = current_position.row, current_position.col
 
-        if self.direction == Direction.RIGHT:
+        if direction == Direction.RIGHT:
             col += 1
-        elif self.direction == Direction.LEFT:
+        elif direction == Direction.LEFT:
             col -= 1
-        elif self.direction == Direction.UP:
+        elif direction == Direction.UP:
             row -= 1
-        elif self.direction == Direction.DOWN:
+        elif direction == Direction.DOWN:
             row += 1
 
         return self.board.cells[row][col]

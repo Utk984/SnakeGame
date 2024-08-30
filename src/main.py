@@ -4,28 +4,36 @@ from classes.board import Board
 from classes.cell import Cell, CellType
 from classes.game import Direction, Game
 from classes.snake import Snake
+from goaltest import goal_test
 from input.user import get_user_input
 from movegen import move_gen
-from goaltest import goal_test
 
 
 def main():
-    init_pos = Cell(5, 5)
-    board = Board(10, 10)
-    board.cells[5][5].cell_type = CellType.SNAKE
+    size = int(input("Enter grid size: "))
+    x = int(input("Enter initial snake row: "))
+    y = int(input("Enter initial snake column: "))
+
+    board = Board(size, size)
+    init_pos = Cell(x, y)
+    board.cells[x][y].cell_type = CellType.SNAKE
     init_snake = Snake(init_pos)
     game = Game(init_snake, board, Direction.NONE)
     game.board.generate_food()
 
     system("clear")
     print(game.board)
-    board.cells[5][5].cell_type = CellType.EMPTY
+    board.cells[int(x)][int(y)].cell_type = CellType.EMPTY
 
     while not game.game_over:
         system("clear")
         print(game.board)
 
         moves = move_gen(game)
+        if len(moves) == 0:
+            game.game_over = True
+            print("Game Over!")
+            break
 
         dirstr = []
         dirs = []
