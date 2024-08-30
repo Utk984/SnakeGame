@@ -24,9 +24,9 @@ class Board:
                 if cell.cell_type == CellType.EMPTY:
                     board_str += ". "
                 elif cell.cell_type == CellType.SNAKE:
-                    board_str += "S "
+                    board_str += "🐍"
                 elif cell.cell_type == CellType.FOOD:
-                    board_str += "F "
+                    board_str += "🍎"
             board_str += "│\n"
         board_str += "└─"
         for _ in range(len(self.cells)-1):
