@@ -39,7 +39,6 @@ class Game:
                     tail.cell_type = CellType.EMPTY
                     self.snake.move(next_cell)
 
-    # system("clear")
 
     def get_next_cell(self, direction: Direction) -> Cell:
         # print("Going to find next cell")

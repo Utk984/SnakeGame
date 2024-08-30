@@ -35,13 +35,27 @@ class Board:
         return board_str
 
     def generate_food(self) -> Tuple[int, int]:
-        # print("Going to generate food")
-        while True:
-            row = random.randint(0, self.ROW_COUNT - 1)
-            col = random.randint(0, self.COL_COUNT - 1)
-            if self.cells[row][col].cell_type != CellType.SNAKE:
-                break
-
+        empty_cells = [
+            (row, col)
+            for row in range(self.ROW_COUNT)
+            for col in range(self.COL_COUNT)
+            if self.cells[row][col].cell_type == CellType.EMPTY
+        ]
+        
+        if not empty_cells:
+            return (-1, -1)  # No empty cells available
+        
+        row, col = random.choice(empty_cells)
         self.cells[row][col].cell_type = CellType.FOOD
-        # print(f"Food is generated at: {row}, {col}")
+        print(f"Food is generated at: {row}, {col}")
         return row, col
+        
+        # while True:
+        #     row = random.randint(0, self.ROW_COUNT - 1)
+        #     col = random.randint(0, self.COL_COUNT - 1)
+        #     if self.cells[row][col].cell_type != CellType.SNAKE:
+        #         break
+        #
+        # self.cells[row][col].cell_type = CellType.FOOD
+        # # print(f"Food is generated at: {row}, {col}")
+        # return row, col

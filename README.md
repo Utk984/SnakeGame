@@ -11,6 +11,11 @@ AI3022 Search Methods in AI - Professor Deepak Khemani
 - [x] No MoveGen or goaltest functions
 - [x] No documentation of our work
 
+## Snake constraints
+- Head moves before rest of body, so if you try to move head where previous tail was, you will die.
+- Even a 1 length snake cannot go back on itself (i.e turn 180 degrees)
+
+
 ## Assignment 1 
 ### Part 1
 Choose a new problem that can be posed as a state space search problem.

@@ -42,10 +42,13 @@ def main():
         system("clear")
         print(game.board)
 
-        moves = move_gen(game)
+        moves = move_gen(game) # moves are game objects (entire states)
+        goal = goal_test(game)
+
         if len(moves) == 0:
             game.game_over = True
             print("Game Over!")
+            print(f"Goal Reached? {goal}")
             break
 
         dirstr = []
@@ -62,7 +65,7 @@ def main():
                 dirstr.append("Right")
 
         print(f"MoveGen: {dirstr}")
-        print(f"Goal Test: {goal_test(game)}")
+        print(f"Goal Test: {goal}")
 
         user_input = get_user_input(dirs)
 
@@ -75,9 +78,10 @@ def main():
 
         game.update()
 
-        if game.game_over:
-            print("Game Over!")
-            break
+        # if game.game_over:
+        #     print("Game Over!")
+        #     print(f"Goal Test Reached?: {goal}")
+        #     break
         # time.sleep(0.5)
 
 
