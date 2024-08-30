@@ -1,11 +1,11 @@
 # 🐍 SnakeGame 🐍
 
-Plaksha University Semester V (Monsoon 2024)
-AI3022 Search Methods in AI - Professor Deepak Khemani
-Assignment 1
-Done By - [Malhar Bhise](https://github.com/coolperson111) and [Utkarsh Agarwal](https://github.com/Utk984)
+Plaksha University Semester V (Monsoon 2024)  
+AI3022 Search Methods in AI - Professor Deepak Khemani  
+Assignment 1  
+Done By - [Malhar Bhise](https://github.com/coolperson111) and [Utkarsh Agarwal](https://github.com/Utk984)  
 
----
+![image of snake game in action](snake.png "Snake in action!")
 
 ## Problem Statement
 
