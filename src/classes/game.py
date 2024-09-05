@@ -57,7 +57,6 @@ class Game:
         return self.board.cells[row][col]
 
     def check_crash(self, next_cell: Cell) -> bool:
-        # return any(cell is next_cell for cell in self.body)
         return (
             next_cell in self.snake.body
             or next_cell.row < 0
@@ -71,7 +70,6 @@ class Game:
             print("Not an instance of Game")
             return False
 
-        # Compare each cell on the board
         for row in range(self.board.ROW_COUNT):
             for col in range(self.board.COL_COUNT):
                 if (
@@ -81,20 +79,15 @@ class Game:
                     print("Cell type is not equal")
                     return False
 
-        # Compare the direction
         return self.direction == other.direction
 
     def __hash__(self):
-        # Hash the snake's body, board state, and direction
         snake_body_hash = hash(tuple((cell.row, cell.col) for cell in self.snake.body))
 
-        # Hash the board cells by iterating over each cell and getting its type
         board_hash = hash(
             tuple(tuple(cell.cell_type for cell in row) for row in self.board.cells)
         )
 
-        # Hash the direction
         direction_hash = hash(self.direction)
 
-        # Combine the hashes
         return hash((snake_body_hash, board_hash, direction_hash))
