@@ -12,22 +12,25 @@ from input.user import user
 
 def main():
     argc = len(sys.argv)
-    sizex = 10
-    sizey = 10
-    x = 5
-    y = 5
-    if (argc > 1 and argc < 6) or (argc > 6):
-        print(
-            "Usage: ./run.sh <board_row_count> <board_col_count> <snake_row> <snake_col> <player>"
-        )
-        return
-    elif argc == 6:
+    if argc == 1:  # default args
+        sizex = 4
+        sizey = 4
+        x = 1
+        y = 1
+        player = 1
+    elif argc == 6:  # set own args
         sizex = int(sys.argv[1])
         sizey = int(sys.argv[2])
         x = int(sys.argv[3])
         y = int(sys.argv[4])
         player = int(sys.argv[5])
+    else:  # incorrect args
+        print(
+            "Usage: ./run.sh <board_row_count> <board_col_count> <snake_row> <snake_col> <player>"
+        )
+        return
 
+    # setup
     board = Board(sizex, sizey)
     init_pos = Cell(x, y)
     board.cells[x][y].cell_type = CellType.SNAKE
@@ -36,6 +39,7 @@ def main():
     system("clear")
     game.board.generate_food()
 
+    # game
     goal = dfs(game) if player == 1 else bfs(game) if player == 2 else user(game)
     print("Game Over!")
 
