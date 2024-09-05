@@ -1,5 +1,4 @@
 import sys
-import time
 from os import system
 
 from classes.board import Board
@@ -41,25 +40,8 @@ def main():
     elif player == 0:
         goal = user(game)
 
-    if game.game_over:
-        print("Game Over!")
-        print(f"Goal Test Reached? {goal}")
-
-    # for move in dfs_path:
-    #     system("clear")
-    #     print(game.board)
-    #
-    #     game.direction = move
-    #     game.update()
-    #     time.sleep(5)
-    #
-    #     if game.game_over:
-    #         print("Game Over!")
-    #         break
-    #
-    #     if goal_test(game):
-    #         print("Goal Reached!")
-    #         break
+    print("Game Over!")
+    print(f"Goal Test Reached? {goal}")
 
 
 if __name__ == "__main__":
