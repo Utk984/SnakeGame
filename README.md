@@ -71,11 +71,11 @@ These are constraints we implemented into the snake when we built them, for the 
 
 ## ISSUES Tracker
 
-- [ ] When user is playing, and goal test is reached, the game shows goal test not reached
 - [ ] Output time at the end of the game in a more understandable manner
 - [ ] Maybe change the last command line arg to accept "user"/"bfs"/"dfs"/"bestfs" instead of 0/1/2/3/4 as that would be more intuitive
 - [ ] Print Snake head and body differently?
 
+- [x] When user is playing, and goal test is reached, the game shows goal test not reached
 - [x] User args to define snake pos and game pos
 - [x] If you go back into the snake, the snake dies
 - [x] If you go off the board, the snake pops from other side (can change that)
