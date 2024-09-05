@@ -24,17 +24,37 @@ def move_gen(game: Game) -> List[Game]:
 def create_new_state(
     current_state: Game, next_cell: Cell, direction: Direction
 ) -> Game:
-    new_board = copy.deepcopy(current_state.board)
-    new_snake = copy.deepcopy(current_state.snake)
-
-    if next_cell.cell_type == CellType.FOOD:
-        # If next cell is food, don't remove the tail
-        new_snake.move(next_cell)
-        new_board.generate_food()
-    else:
-        # Remove tail and then move
-        tail = new_snake.body.pop()
-        tail.cell_type = CellType.EMPTY
-        new_snake.move(next_cell)
-
-    return Game(new_snake, new_board, direction)
+    game = copy.deepcopy(current_state)
+    game.direction = direction
+    game.update()
+    return game
+    #
+    # if game.board.cells[next_cell.row][next_cell.col].cell_type == CellType.FOOD:
+    #     print("Food is eaten!")
+    #     game.snake.move(next_cell)
+    #     print(game.snake.head.row, game.snake.head.col)
+    #     game.board.generate_food()
+    # else:
+    #     print("No food")
+    #     tail = game.snake.body.pop()
+    #     game.board.cells[tail.row][tail.col].cell_type = CellType.EMPTY
+    #     game.snake.move(next_cell)
+    #     print(game.snake.head.row, game.snake.head.col)
+    #
+    # # if new_board.cells[next_cell.row][next_cell.col].cell_type == CellType.FOOD:
+    # #     print("Food is eaten!")
+    # #     new_snake.move(next_cell)
+    # #     new_board.cells[next_cell.row][next_cell.col].cell_type = CellType.SNAKE
+    # #     print(new_snake.head.row, new_snake.head.col)
+    # #     new_board.generate_food()
+    # # else:
+    # #     print("No food")
+    # #     tail = new_snake.body.pop()
+    # #     new_board.cells[tail.row][tail.col].cell_type = CellType.EMPTY
+    # #     new_snake.move(next_cell)
+    # #     new_board.cells[next_cell.row][next_cell.col].cell_type = CellType.SNAKE
+    # #     print(new_snake.head.row, new_snake.head.col)
+    # #
+    # # return Game(new_snake, new_board, Direction.NONE)
+    #
+    # return game
