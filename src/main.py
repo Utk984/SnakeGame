@@ -37,9 +37,16 @@ def main():
     game.board.generate_food()
 
     goal = dfs(game) if player == 1 else bfs(game) if player == 2 else user(game)
-
     print("Game Over!")
-    print(f"Goal Test Reached? {goal}")
+
+    if goal:
+        if player == 1 or player == 2:
+            print("Time: ", goal["time"])
+            print("Number of Moves: ", goal["num_moves"])
+            print("Max Open Size: ", goal["max_open_size"])
+        print("Goal Test Reached!!!")
+    else:
+        print("Goal Test Not Reached!!!")
 
 
 if __name__ == "__main__":
