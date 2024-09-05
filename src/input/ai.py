@@ -53,8 +53,8 @@ def dfs(game: Game):
                 system("clear")
                 if move:
                     dir += direction_to_string(move) + " -> "
-                print(dir)
                 print(game.board)
+                print(dir)
                 time.sleep(1)
             return True
 
