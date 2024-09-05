@@ -55,18 +55,26 @@ pip install -r requirements.txt
 ./run.sh
 
 # OR with specifying command line arguments
-# eg - board 5x5, snake pos (2, 3)
-./run.sh 5 5 2 3
+# last arg - 1 for DFS, 2 for BFS, anything else for user control
+# eg - board 5x5, snake pos (2, 3), and 0 for user control
+./run.sh 5 5 2 3 0
 ```
 
 
 ## Snake constraints
+
+These are constraints we implemented into the snake when we built them, for the knowledge of the user/player. These are intended to be the way. They are *conscious* decisions made by the developers of this game.
 
 - Head moves before rest of body, so if you try to move head where previous tail was, you will die.
 - Even a 1 length snake cannot go back on itself (i.e turn 180 degrees)
 
 
 ## ISSUES Tracker
+
+- [ ] When user is playing, and goal test is reached, the game shows goal test not reached
+- [ ] Output time at the end of the game in a more understandable manner
+- [ ] Maybe change the last command line arg to accept "user"/"bfs"/"dfs"/"bestfs" instead of 0/1/2/3/4 as that would be more intuitive
+- [ ] Print Snake head and body differently?
 
 - [x] User args to define snake pos and game pos
 - [x] If you go back into the snake, the snake dies

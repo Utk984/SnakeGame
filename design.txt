@@ -18,3 +18,18 @@ Press any (wasd) to start. Press 'q' to quit.
 MoveGen: ['Right', 'Up', 'Down']
 Goal Test: False
 Game ended by user
+
+
+
+*****************************
+Head and Body seperate Design
+*****************************
+In Progress
+
+┌───────────┐
+│ 🐍. . . 🍎│
+│ S . . . . │
+│ S . . . . │
+│ S . . . . │
+│ . . . . . │
+└───────────┘
