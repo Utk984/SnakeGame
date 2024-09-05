@@ -70,4 +70,4 @@ def user(game):
 
         game.update()
 
-    return goal
+    return

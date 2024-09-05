@@ -1,38 +1,41 @@
 import time
-from os import system
 
-from classes.game import Direction, Game
+from classes.game import Game
 from goaltest import goal_test
 from movegen import move_gen
+from utils.utils import direction_to_string, display_game, reconstruct_path
 
 
-def dfs(game: Game):
-    initial = game
+def dfs(game: Game, eval=False):
     stack = [(game, None)]
     visited = set()
     predecessors = {}
+    max_open_size = 0
+    t1 = time.time()
 
     while stack:
         current_game, direction = stack.pop()
+        max_open_size = max(max_open_size, len(stack))
 
-        system("clear")
-        print(current_game.board)
+        # system("clear")
+        # print(current_game.board)
+        # time.sleep(0.1)
 
         if goal_test(current_game):
-            print("Goal Reached!")
+            t2 = time.time()
             path = reconstruct_path(predecessors, current_game)
-            print("Path to goal:")
-            dir = ""
+            dir = "Start"
             for game, move in path:
-                system("clear")
-                print("INITIAL STATE")
-                print(initial.board)
                 if move:
-                    dir += direction_to_string(move) + " -> "
-                print(game.board)
-                print(dir)
-                time.sleep(1)
-            return True
+                    dir += " -> " + direction_to_string(move)
+                if not eval:
+                    display_game(game, 0.5, dir)
+            return {
+                "num_moves": len(path),
+                "time": t2 - t1,
+                "max_open_size": max_open_size,
+                "path": path,
+            }
 
         visited.add(current_game)
 
@@ -43,29 +46,4 @@ def dfs(game: Game):
                 stack.append((next_game, next_game.direction))
                 predecessors[next_game] = (current_game, next_game.direction)
 
-        time.sleep(0.1)
-
-    return False
-
-
-def reconstruct_path(predecessors, goal_game):
-    path = []
-    current_game = goal_game
-    while current_game in predecessors:
-        predecessor_game, direction = predecessors[current_game]
-        path.append((current_game, direction))
-        current_game = predecessor_game
-    path.reverse()
-    return path
-
-
-def direction_to_string(direction: Direction) -> str:
-    if direction == Direction.RIGHT:
-        return "R"
-    elif direction == Direction.LEFT:
-        return "L"
-    elif direction == Direction.UP:
-        return "U"
-    elif direction == Direction.DOWN:
-        return "D"
-    return "None"
+    return None
