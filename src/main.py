@@ -5,7 +5,8 @@ from classes.board import Board
 from classes.cell import Cell, CellType
 from classes.game import Direction, Game
 from classes.snake import Snake
-from input.ai import dfs
+from input.bfs import bfs
+from input.dfs import dfs
 from input.user import user
 
 
@@ -35,10 +36,7 @@ def main():
     system("clear")
     game.board.generate_food()
 
-    if player == 1:
-        goal = dfs(game)
-    elif player == 0:
-        goal = user(game)
+    goal = dfs(game) if player == 1 else bfs(game) if player == 2 else user(game)
 
     print("Game Over!")
     print(f"Goal Test Reached? {goal}")
