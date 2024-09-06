@@ -17,16 +17,21 @@ def main():
         sizey = 4
         x = 1
         y = 1
-        player = 1
+        player = "user"
     elif argc == 6:  # set own args
         sizex = int(sys.argv[1])
         sizey = int(sys.argv[2])
         x = int(sys.argv[3])
         y = int(sys.argv[4])
-        player = int(sys.argv[5])
+        player = sys.argv[5]
+        if player not in ("user", "bfs", "dfs", "bestfs"):
+            print(
+                "Usage: ./run.sh <board_row_count> <board_col_count> <snake_row> <snake_col> <user/bfs/dfs/bestfs>"
+            )
+            return
     else:  # incorrect args
         print(
-            "Usage: ./run.sh <board_row_count> <board_col_count> <snake_row> <snake_col> <player>"
+            "Usage: ./run.sh <board_row_count> <board_col_count> <snake_row> <snake_col> <user/bfs/dfs/bestfs>"
         )
         return
 
@@ -40,11 +45,11 @@ def main():
     game.board.generate_food()
 
     # game
-    goal = dfs(game) if player == 1 else bfs(game) if player == 2 else user(game)
+    goal = dfs(game) if player == "dfs" else bfs(game) if player == "bfs" else user(game)
     print("Game Over!")
 
     if goal:
-        if player == 1 or player == 2:
+        if player == "bfs" or player == "dfs":
             print("Time: ", goal["time"])
             print("Number of Moves: ", goal["num_moves"])
             print("Max Open Size: ", goal["max_open_size"])

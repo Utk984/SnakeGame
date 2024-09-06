@@ -11,8 +11,8 @@ def plots(results):
     dfs_max_open_size = [result["max_open_size"] for result in dfs_results]
     bfs_max_open_size = [result["max_open_size"] for result in bfs_results]
 
-    bfs_time = [result["time"] for result in bfs_results]
-    dfs_time = [result["time"] for result in dfs_results]
+    bfs_time = [result["time"].total_seconds() for result in bfs_results]
+    dfs_time = [result["time"].total_seconds() for result in dfs_results]
 
     _, axs = plt.subplots(1, 3, figsize=(12, 6))
 

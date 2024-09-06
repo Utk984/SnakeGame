@@ -42,5 +42,5 @@ if __name__ == "__main__":
     results = run_comparisons([3] * 10)
     plots(results)
 
-    results = run_comparisons([2, 3, 4, 5])
+    results = run_comparisons([2, 2, 2, 3, 3, 3, 4, 4, 4])
     plots(results)

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python3 src/eval.py $@
+python3 src/eval.py
