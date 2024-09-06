@@ -6,6 +6,7 @@ from readchar import key, readkey
 from classes.game import Direction
 from goaltest import goal_test
 from movegen import move_gen
+from utils.utils import direction_to_string
 
 
 def get_user_input(dirs: List):
@@ -47,14 +48,7 @@ def user(game):
         dirs = []
         for i in moves:
             dirs.append(i.direction)
-            if i.direction == 2:
-                dirstr.append("Up")
-            if i.direction == -2:
-                dirstr.append("Down")
-            if i.direction == -1:
-                dirstr.append("Left")
-            if i.direction == 1:
-                dirstr.append("Right")
+            dirstr.append(direction_to_string(i.direction))
 
         print(f"MoveGen: {dirstr}")
         print(f"Goal Test: {goal}")
@@ -70,4 +64,4 @@ def user(game):
 
         game.update()
 
-    return
+    return goal_test(game)

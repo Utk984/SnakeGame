@@ -1,5 +1,5 @@
-import time
 from collections import deque
+from datetime import datetime
 
 from classes.game import Game
 from goaltest import goal_test
@@ -12,7 +12,7 @@ def bfs(game: Game, eval=False):
     visited = set()
     predecessors = {}
     max_open_size = 0
-    t1 = time.time()
+    t1 = datetime.now()
 
     while queue:
         current_game, direction = queue.popleft()
@@ -23,7 +23,7 @@ def bfs(game: Game, eval=False):
         # time.sleep(0.1)
 
         if goal_test(current_game):
-            t2 = time.time()
+            t2 = datetime.now()
             path = reconstruct_path(predecessors, current_game)
             dir = "Start"
             for game, move in path:
