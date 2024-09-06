@@ -49,11 +49,10 @@ def main():
     print("Game Over!")
 
     if goal:
-        if player == "bfs" or player == "dfs":
-            print("Time: ", goal["time"])
-            print("Number of Moves: ", goal["num_moves"])
-            print("Max Open Size: ", goal["max_open_size"])
-        print("Goal Test Reached!!!")
+        print("Time: ", goal["time"])
+        print("Number of Moves: ", goal["num_moves"])
+        print("Max Open Size: ", goal["max_open_size"])
+        print("Goal Test Reached? ", goal["goaltest"])
     else:
         print("Goal Test Not Reached!!!")
 

@@ -1,3 +1,4 @@
+from datetime import datetime
 from os import system
 from typing import List
 
@@ -33,6 +34,9 @@ def get_user_input(dirs: List):
 
 def user(game):
     goal = False
+    t1 = datetime.now()
+    num_moves = 0
+
     while not game.game_over:
         goal = goal_test(game)
         system("clear")
@@ -63,5 +67,12 @@ def user(game):
             game.direction = user_input
 
         game.update()
+        num_moves += 1
 
-    return goal_test(game)
+    t2 = datetime.now()
+    return {
+        "num_moves": num_moves,
+        "time": t2 - t1,
+        "max_open_size": "NA",
+        "goaltest": True,
+    }
