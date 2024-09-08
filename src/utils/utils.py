@@ -4,8 +4,10 @@ from os import system
 from classes.game import Direction, Game
 
 
-def display_game(game: Game, delay: float = 0.5, dir: str = ""):
+def display_game(game: Game, gtype: str = "", delay: float = 0.5, dir: str = ""):
     system("clear")
+    print("SNAKE GAME")
+    print(f"mode: {gtype}\n\n")
     print(game.board)
     print(dir)
     time.sleep(delay)

@@ -35,6 +35,7 @@ def dfs(game: Game, eval=False):
                 "time": t2 - t1,
                 "max_open_size": max_open_size,
                 "path": path,
+                "goaltest": True,
             }
 
         visited.add(current_game)
