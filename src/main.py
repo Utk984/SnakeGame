@@ -5,6 +5,7 @@ from classes.board import Board
 from classes.cell import Cell, CellType
 from classes.game import Direction, Game
 from classes.snake import Snake
+from input.bestfs import bestfs
 from input.bfs import bfs
 from input.dfs import dfs
 from input.user import user
@@ -45,7 +46,16 @@ def main():
     game.board.generate_food()
 
     # game
-    goal = dfs(game) if player == "dfs" else bfs(game) if player == "bfs" else user(game)
+    goal = None
+    if player == "user":
+        goal = user(game)
+    if player == "bfs":
+        goal = bfs(game)
+    if player == "dfs":
+        goal = dfs(game)
+    if player == "bestfs":
+        goal = bestfs(game)
+
     print("Game Over!")
 
     if goal:

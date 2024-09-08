@@ -72,6 +72,7 @@ These are constraints we implemented into the snake when we built them, for the 
 ## ISSUES Tracker
 
 - [ ] Print Snake head and body differently?
+- [ ] Add command line argument to set delay time (float)
 
 - [x] Display stats (time, no. of moves) for user game also
 - [x] Maybe change the last command line arg to accept "user"/"bfs"/"dfs"/"bestfs" instead of 0/1/2/3/4 as that would be more intuitive
