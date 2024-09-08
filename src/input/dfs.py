@@ -17,10 +17,6 @@ def dfs(game: Game, eval=False):
         current_game, direction = stack.pop()
         max_open_size = max(max_open_size, len(stack))
 
-        # system("clear")
-        # print(current_game.board)
-        # time.sleep(0.1)
-
         if goal_test(current_game):
             t2 = datetime.now()
             path = reconstruct_path(predecessors, current_game)

@@ -9,13 +9,7 @@ from utils.utils import direction_to_string, display_game, reconstruct_path
 
 
 def heuristic(game: Game):
-    # Example heuristic: you can refine this as needed
-    # Proximity to the nearest food minus the current length of the snake
-    # food_distance = (
-    #     game.get_distance_to_food()
-    # )  # Assuming a method to get the closest food
-    snake_length = len(game.snake.body)  # Assuming snake body is represented as a list
-    # return food_distance - snake_length
+    snake_length = len(game.snake.body)
     return -snake_length
 
 

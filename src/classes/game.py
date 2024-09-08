@@ -1,5 +1,4 @@
 from enum import IntEnum
-from os import system
 
 from classes.board import Board
 from classes.cell import Cell, CellType
