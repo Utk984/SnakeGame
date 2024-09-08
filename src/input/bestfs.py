@@ -20,9 +20,8 @@ def heuristic(game: Game):
 
 
 def bestfs(game: Game, eval=False):
-    # Priority queue to store (heuristic, game, direction)
     pq = []
-    counter = count()  # Unique counter to break ties
+    counter = count()
     heappush(pq, (heuristic(game), next(counter), (game, None)))
     visited = set()
     predecessors = {}
@@ -56,7 +55,14 @@ def bestfs(game: Game, eval=False):
 
         for next_game in valid_moves:
             if next_game not in visited:
-                heappush(pq, (heuristic(next_game), next(counter), (next_game, next_game.direction)))
+                heappush(
+                    pq,
+                    (
+                        heuristic(next_game),
+                        next(counter),
+                        (next_game, next_game.direction),
+                    ),
+                )
                 predecessors[next_game] = (current_game, next_game.direction)
 
     return None
