@@ -11,6 +11,11 @@ from input.bfs import bfs
 from input.dfs import dfs
 from utils.plots import plots
 
+#############
+# This program is to evaluate the three algorithms
+# BFS, DFS, and bestfs against each other in few paramaters
+#############
+
 
 def run_comparisons(board_size, bfs_eval=True):
     results = []

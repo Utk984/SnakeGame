@@ -5,7 +5,7 @@ AI3022 Search Methods in AI - Professor Deepak Khemani
 Assignment 1  
 Done By - [Malhar Bhise](https://github.com/coolperson111) and [Utkarsh Agarwal](https://github.com/Utk984)  
 
-![image of snake game in action](snake.png "Snake in action!")
+![image of snake game in action](imgs/snake.png "Snake in action!")
 
 ## Problem Statement
 
@@ -55,9 +55,9 @@ pip install -r requirements.txt
 ./run.sh
 
 # OR with specifying command line arguments
-# last arg - 1 for DFS, 2 for BFS, anything else for user control
-# eg - board 5x5, snake pos (2, 3), and 0 for user control
-./run.sh 5 5 2 3 0
+# eg - board 5x5, snake pos (2, 3), and user for user control
+# last arg - <dfs/bfs/bestfs/user>
+./run.sh 5 5 2 3 user
 ```
 
 
@@ -68,11 +68,12 @@ These are constraints we implemented into the snake when we built them, for the 
 - Head moves before rest of body, so if you try to move head where previous tail was, you will die.
 - Even a 1 length snake cannot go back on itself (i.e turn 180 degrees)
 
+## Evaluation Results
+
+![evaluation of agents](imgs/eval/eval1.png "Performances on 10 instances of 3x3 boards")
+
 
 ## ISSUES Tracker
-
-- [ ] Print Snake head and body differently?
-- [ ] Add command line argument to set delay time (float)
 
 - [x] Display stats (time, no. of moves) for user game also
 - [x] Maybe change the last command line arg to accept "user"/"bfs"/"dfs"/"bestfs" instead of 0/1/2/3/4 as that would be more intuitive
