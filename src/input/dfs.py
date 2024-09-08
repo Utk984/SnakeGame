@@ -29,7 +29,7 @@ def dfs(game: Game, eval=False):
                 if move:
                     dir += " -> " + direction_to_string(move)
                 if not eval:
-                    display_game(game, 0.5, dir)
+                    display_game(game=game, gtype="dfs", delay=0.5, dir=dir)
             return {
                 "num_moves": len(path),
                 "time": t2 - t1,

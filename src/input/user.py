@@ -7,7 +7,7 @@ from readchar import key, readkey
 from classes.game import Direction
 from goaltest import goal_test
 from movegen import move_gen
-from utils.utils import direction_to_string
+from utils.utils import direction_to_string, display_game
 
 
 def get_user_input(dirs: List):
@@ -39,8 +39,7 @@ def user(game):
 
     while not game.game_over:
         goal = goal_test(game)
-        system("clear")
-        print(game.board)
+        display_game(game=game, gtype="user", delay=0, dir="")
 
         moves = move_gen(game)
 
